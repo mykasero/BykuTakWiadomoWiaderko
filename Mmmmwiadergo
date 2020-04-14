@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void porownawcza(char L1[50],char L2[50])
+{
+    if(strlen(L1)>strlen(L2))
+    {
+        return 1;
+    }
+    else if(strlen(L2)>strlen(L1))
+    {
+        return 2;
+    }
+    else if(strlen(L1)==strlen(L2))
+    {
+           for(int i=0;i<strlen(L1);i++)
+           {
+               if(L1[i]!=L2[i]) return 3; break;
+           }    return 0;
+    }
+}
+int main()
+{
+    char L1[50],L2[50];
+    printf("Podaj pierwszy lancuch: \n");
+    gets(L1[50]);
+    printf("\nPodaj drugi lancuch: \n");
+    gets(L2[50]);
+    printf("\n porownawcza(L1[50],L2[50]");
+    return 0;
+}
