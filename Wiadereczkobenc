@@ -1,0 +1,112 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int wczytano=0;
+
+void wczytaj(double tablica[], int liczba_elementow){
+    for(int i=0; i<liczba_elementow; i++)
+    {
+        scanf("%Lf", &tablica[i]);
+    }
+}
+void drukuj(double tablica[], int liczba_elementow){
+    printf("Elementy w tablicy: ");
+    for(int i=0; i<liczba_elementow; i++)
+    {
+        if(i<liczba_elementow-1)
+        {
+            printf("%Lf, ", tablica[i]);
+        }
+        else
+        {
+            printf("%Lf.", tablica[i]);
+        }
+    }
+    printf("\n");
+}
+double minimum(double tablica[], int liczba_elementow){
+    double min = tablica[0];
+    for(int i=1; i<liczba_elementow; i++)
+    {
+        if(min>tablica[i])  min=tablica[i];
+    }
+    return min;
+}
+double maksimum(double tablica[], int liczba_elementow){
+    double maks = tablica[0];
+    for(int i=1; i<liczba_elementow; i++)
+    {
+        if(maks<tablica[i]) maks=tablica[i];
+    }
+    return maks;
+}
+int ile_razy(double tablica[], int liczba_elementow, double liczba){
+    int x=0;
+    for(int i=0; i<liczba_elementow; i++)
+    {
+        if(tablica[i]==liczba)  x++;
+    }
+    return x;
+}
+
+int main()
+{
+    double tablica[256], liczba;
+    int n, liczba_elementow;
+    while(1)
+    {
+        if(wczytano)
+        {
+            printf("1. wczytaj\n2. drukuj\n3. minimum\n4. maksimum\n5. ile razy?\n6. wyjdz\n");
+        }
+        else
+        {
+            printf("1. wczytaj\nDostep do innych funkcji otrzymasz po wczytaniu danych.\n");
+        }
+        scanf("%d", &n);
+        if(!wczytano)
+        {
+            n=1;
+        }
+
+        switch(n)
+        {
+            case 1:
+                system("cls");
+                printf("Podaj liczbe elementow: ");
+                scanf("%d", &liczba_elementow);
+                wczytaj(tablica, liczba_elementow);
+                wczytano=1;
+                break;
+            case 2:
+                system("cls");
+                drukuj(tablica, liczba_elementow);
+                break;
+            case 3:
+                system("cls");
+                printf("Minimalna wartosc w tablicy: %Lf\n", minimum(tablica, liczba_elementow));
+                break;
+            case 4:
+                system("cls");
+                printf("Maksymalna wartosc w tablicy: %Lf\n", maksimum(tablica, liczba_elementow));
+                break;
+            case 5:
+                system("cls");
+                printf("Podaj liczbe: ");
+                double szukana_liczba;
+                scanf("%Lf", &szukana_liczba);
+                printf("Liczba %Lf wystepuje w tablicy %d razy.\n", szukana_liczba,ile_razy(tablica, liczba_elementow, szukana_liczba));
+                break;
+            case 6:
+                system("cls");
+                exit(1);
+                break;
+            default:
+                system("cls");
+                break;
+        }
+
+
+    }
+    return 0;
+}
